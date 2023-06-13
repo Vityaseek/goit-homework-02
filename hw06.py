@@ -1,4 +1,3 @@
-import shutil
 from pathlib import Path
 import sys
 
@@ -13,7 +12,7 @@ def remove_dir(path: Path):
     folders_to_delete = [f for f in path.glob("**")]
     for folder in folders_to_delete[::-1]:
         try:
-            folder.rmdir() 
+            folder.rmdir()
         except OSError:
             continue
 
@@ -46,8 +45,8 @@ def sort_folder(path: Path):
 
 def main():
     try:
-        path = Path(r'C:\Users\Ulfanzer\Desktop\Testfolder')
-        # path = Path(sys.argv[1])
+        # path = Path(r'C:\Users\Ulfanzer\Desktop\Testfolder')
+        path = Path(sys.argv[1])
     except IndexError:
         return "No path folder"
 
