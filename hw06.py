@@ -55,8 +55,8 @@ def unpack_archice(path: Path):
 
 def main():
     try:
-        path = Path(r'C:\Users\Ulfanzer\Desktop\Testfolder')
-        # path = Path(sys.argv[1])
+        # path = Path(r'C:\Users\Ulfanzer\Desktop\Testfolder')
+        path = Path(sys.argv[1])
     except IndexError:
         return "No path folder"
 
