@@ -1,5 +1,6 @@
 from pathlib import Path
 import sys
+import shutil
 
 from normalaze import normalazie
 
@@ -40,13 +41,22 @@ def sort_folder(path: Path):
             cat = get_category(item)
             move_file(item, path, cat)
             print(item)
-    remove_dir(path)
+
+
+def unpack_archice(path: Path):
+    for item in path.glob('**/*'):
+        try:
+            shutil.unpack_archive(
+                item, fr'C:\Users\Ulfanzer\Desktop\Testfolder\archives\{item.stem}')
+            print('good')
+        except shutil.ReadError:
+            continue
 
 
 def main():
     try:
-        # path = Path(r'C:\Users\Ulfanzer\Desktop\Testfolder')
-        path = Path(sys.argv[1])
+        path = Path(r'C:\Users\Ulfanzer\Desktop\Testfolder')
+        # path = Path(sys.argv[1])
     except IndexError:
         return "No path folder"
 
@@ -54,7 +64,8 @@ def main():
         return f"Folder with path {path} doesn't exists"
 
     sort_folder(path)
-
+    remove_dir(path)
+    unpack_archice(path)
     return 'All ok'
 
 
