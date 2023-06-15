@@ -47,7 +47,7 @@ def unpack_archice(path: Path):
     for item in path.glob('**/*'):
         try:
             shutil.unpack_archive(
-                item, fr'C:\Users\Ulfanzer\Desktop\Testfolder\archives\{item.stem}')
+                item, f'{item}{item.stem}')
             print('good')
         except shutil.ReadError:
             continue
